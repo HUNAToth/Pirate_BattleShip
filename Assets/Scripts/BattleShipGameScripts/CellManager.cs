@@ -40,11 +40,9 @@ public class CellManager : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-
-        HighLightCheck();
         HitCheck();
         DisplayAlerts();
-       
+      
     }
 
 
@@ -52,10 +50,7 @@ public class CellManager : MonoBehaviour
     {
         //check if mouse is clicked
         if (Input.GetMouseButtonDown(0)) {
-            Vector2 mousePos = new Vector2(Input.mousePosition.x,Input.mousePosition.y);
-            Vector2 objPos = Camera.main.WorldToScreenPoint(this.transform.position);
-
-            if(Vector2.Distance(mousePos,objPos) < 7 ){
+            if(isHighlighted){
                 if(isOccupied){
                     isHit = true;
                     transform.GetComponent<ShipPart>().Hit();
@@ -68,15 +63,6 @@ public class CellManager : MonoBehaviour
             }
         }
     }
-
-    void HighLightCheck()
-    {
-        //if the x and y of the cell is the same of the mouse position, then highlight the cell
-        Vector2 mousePos = new Vector2(Input.mousePosition.x,Input.mousePosition.y);
-        Vector2 objPos = Camera.main.WorldToScreenPoint(transform.position);
-        isHighlighted = Vector2.Distance(mousePos,objPos) < 7;       
-    }
-
     void DisplayAlerts(){
         if(isHit||isMissed) {
             if(isOccupied){

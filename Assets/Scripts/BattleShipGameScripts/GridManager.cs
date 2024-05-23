@@ -20,6 +20,8 @@ public class GridManager : MonoBehaviour
 
     public GameObject shipPrefab;
 
+    public GameObject currentHighlightedCell;
+
     void Start()
     {
         this.InitiateGrid(GridXSize, GridYSize);
@@ -34,6 +36,7 @@ public class GridManager : MonoBehaviour
     void Update()
     {
         FilterRemainingShips();
+        SetHighLightedCell();
     }
 
 
@@ -208,6 +211,26 @@ public class GridManager : MonoBehaviour
             }
         }
         remainingShips = remainingShipsList.ToArray();
+    }
+
+    public void SetHighLightedCell()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.transform.tag == "Cell")
+            {
+                Debug.Log("Cell hit: "+hit.transform.name+" is highlighted: "+hit.transform.GetComponent<CellManager>().isHighlighted );
+                if (currentHighlightedCell != null)
+                {
+                    currentHighlightedCell.GetComponent<CellManager>().isHighlighted = false;
+                }
+                currentHighlightedCell = hit.transform.gameObject;
+                currentHighlightedCell.GetComponent<CellManager>().isHighlighted = true;
+                currentHighlightedCell.GetComponent<CellManager>().Alert_HighLight.SetActive(true);
+            }
+        }
     }
     
 }

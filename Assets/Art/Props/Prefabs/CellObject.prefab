@@ -163,6 +163,7 @@ MonoBehaviour:
   Alert_Hit: {fileID: 0}
   Alert_Miss: {fileID: 0}
   Alert_HighLight: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!114 &4227458454653908162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +180,6 @@ MonoBehaviour:
   y: 0
   isHit: 0
   isSunk: 0
-  parent: {fileID: 0}
   smokePrefab: {fileID: 5517505846596900956}
 --- !u!1 &4171914294005768210
 GameObject:

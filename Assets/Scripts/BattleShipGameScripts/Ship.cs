@@ -7,7 +7,9 @@ public class Ship
     public int size;
     public bool isSunk;
 
-[SerializeField]
+    public int hits = 0;
+
+    [SerializeField]
     public ShipPart[] parts;
 
     public Ship(string name, ShipPart[] parts)
@@ -15,6 +17,7 @@ public class Ship
         this.name = name;
         this.isSunk = false;
         this.parts = parts;
+        this.size = parts.Length;
     }
 
     public bool IsSunk()
@@ -31,5 +34,17 @@ public class Ship
             part.isSunk = true;
         }
     }   
+
+    public void Hit()
+    {
+        UIManager uIManager = GameObject.Find("GAMEMANAGER").GetComponent<UIManager>();
+        uIManager.DisplayTextMessage("Ship Hit!");
+        hits++;
+        if(hits == parts.Length)
+        {
+            ExecuteSink();        
+            uIManager.DisplayTextMessage("Ship sunk!");
+        }
+    }
 
 }

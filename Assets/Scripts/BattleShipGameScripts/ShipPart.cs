@@ -20,18 +20,16 @@ public class ShipPart : MonoBehaviour
     }
     public void Update()
     {
-        if(isSunk&&smokePrefab!=null)
-        {
-            smokePrefab.SetActive(true);      
-        }
+      
     }
 
     public void Hit()
     {
-        Debug.Log("ShipPart Hit");
         if(!isHit)
         {
             isHit = true;
+            smokePrefab.SetActive(true);  
+            parent.Hit();
         }
     }
 

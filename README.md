@@ -19,9 +19,9 @@ A classic **Battleship** game implemented in Unity. This project allows players 
 ## Features
 
 - **Single Player Mode**: Play against a basic AI with random ship placement and attacks.
-- **Grid-based Gameplay**: Players place their ships and take turns guessing the location of their opponent's ships.
+- **Grid-based Gameplay**: Player take turns guessing the location of the opponent's ships.
 - **Simple UI**: Intuitive, clean, and minimalist user interface.
-- **3D Graphics**: Flat 2D grid with clear ship and hit markers.
+- **3D Graphics**: 2D grid with clear ship and hit markers, in a 3D environment.
 
 ## Gameplay
 
